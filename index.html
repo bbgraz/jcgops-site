@@ -59,6 +59,29 @@
     .btn-ghost:hover{border-color:var(--navy);text-decoration:none}
     .btn-lg{padding:15px 28px;font-size:16px}
 
+
+    /* ===== TEXTURE: the command-center canvas, faint, bleeding off the right edge ===== */
+    .hero{position:relative}
+    .texture{
+      position:absolute; top:-40px; right:-260px; width:900px; max-width:none;
+      pointer-events:none; user-select:none; z-index:0;
+      opacity:.10; border-radius:18px;   /* <-- DIAL THE TEXTURE HERE: .04 barely there, .18 clearly visible */
+      /* fade it out toward the text on the left and toward the bottom */
+      -webkit-mask-image:linear-gradient(to left, #000 20%, transparent 85%),
+                         linear-gradient(to bottom, #000 55%, transparent 100%);
+      -webkit-mask-composite:source-in; mask-image:linear-gradient(to left, #000 20%, transparent 85%),
+                         linear-gradient(to bottom, #000 55%, transparent 100%);
+      mask-composite:intersect;
+      animation:drift 48s ease-in-out infinite alternate;
+    }
+    .hero > *:not(.texture){position:relative; z-index:1}
+    @keyframes drift{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(-26px,14px,0) scale(1.035)}
+    }
+    @media (prefers-reduced-motion: reduce){ .texture{animation:none} }
+    @media (max-width:1080px){ .texture{display:none} }
+
     /* Hero */
     .hero{padding:72px 0 56px;text-align:center}
     .pill{display:inline-flex;align-items:center;gap:8px;background:var(--soft2);color:var(--navy);
@@ -164,6 +187,7 @@
   <div class="wrap">
     <!-- ========== 2. HERO: the big headline, the two buttons, the three ticks ========== -->
     <section class="hero" style="border-top:none">
+      <img class="texture" src="canvas.jpg" alt="" aria-hidden="true" width="1400" height="588" loading="lazy" decoding="async">
       <span class="pill"><span class="dot"></span>Miami-Dade &amp; Broward County, Florida</span>
       <h1>Stop missed opportunities.</h1>
       <p class="lead">Custom AI solutions for single operator and small businesses</p>
