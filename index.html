@@ -46,6 +46,10 @@
       font-size:19px;letter-spacing:-.015em}
     .brand:hover{text-decoration:none}
     .brand img{display:block;width:34px;height:34px}
+    .head-actions{display:flex;align-items:center;gap:18px}
+    .head-phone{color:var(--navy);font-weight:680;font-size:15.5px;white-space:nowrap}
+    .head-phone:hover{color:var(--teal-dark)}
+    @media (max-width:640px){.head-phone{display:none}}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
       border-radius:999px;padding:12px 22px;font-weight:650;font-size:15px;line-height:1;
       border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:.15s ease}
@@ -123,6 +127,8 @@
       border:1px solid var(--line);border-radius:11px;padding:12px 14px}
     input:focus,textarea:focus,select:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
     textarea{min-height:120px;resize:vertical}
+    .call-line{margin:14px 0 0;font-size:17px;font-weight:600;color:var(--navy)}
+    .call-line a{font-weight:730}
     .form-note{font-size:13.5px;color:var(--muted);margin:2px 0 0}
 
     footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--muted);font-size:14.5px}
@@ -146,7 +152,10 @@
       <img src="mark.png" width="34" height="34" alt="">
       <span>JCG Ops</span>
     </a>
-    <a class="btn btn-primary" href="#contact">Start Now</a>
+    <div class="head-actions">
+      <a class="head-phone" href="tel:+19542829484">(954) 282-9484</a>
+      <a class="btn btn-primary" href="#contact">Start Now</a>
+    </div>
   </div>
 </header>
 
@@ -290,7 +299,7 @@
         </details>
         <details>
           <summary>How do we start?</summary>
-          <p>Send us a note using the form on this page. We reply and set up a 15-minute discovery call to look for efficiencies in how work comes into your business.</p>
+          <p>Send us a note using the form on this page, or call or text (954) 282-9484. We reply and set up a 15-minute discovery call to look for efficiencies in how work comes into your business.</p>
         </details>
       </div>
     </section>
@@ -300,6 +309,7 @@
         <p class="eyebrow">Contact us</p>
         <h2>Start Now</h2>
         <p class="section-sub">Tell us a little about your business. We reply from a real person, usually the same business day.</p>
+        <p class="call-line">Prefer to talk? Call or text <a href="tel:+19542829484">(954) 282-9484</a>.</p>
         <form action="FORM_ENDPOINT" method="POST">
           <div class="row2">
             <div>
@@ -346,7 +356,7 @@
       <img src="logo.png" width="96" height="81" alt="JCG Ops" style="width:96px;height:auto">
       <span>JCG Ops, a JCG Concepts, Inc. business.<br>Hollywood, Florida. Serving Broward County.</span>
     </div>
-    <div><a href="#contact">Start Now</a></div>
+    <div><a href="tel:+19542829484">(954) 282-9484</a> &nbsp;·&nbsp; <a href="#contact">Start Now</a></div>
   </div>
 </footer>
 
@@ -364,7 +374,9 @@
       "image":"https://jcgops.com/logo.png",
       "description":"Operations consulting for small home-services contractors in Broward County, Florida. JCG Ops sets up systems that capture incoming jobs, speed up estimates and follow-up, and reduce the calls the office answers.",
       "slogan":"Stop losing jobs to a missed phone call.",
+      "telephone":"+19542829484",
       "priceRange":"From $99/month",
+      "contactPoint":{"@type":"ContactPoint","telephone":"+19542829484","contactType":"sales","areaServed":"US-FL","availableLanguage":"English"},
       "address":{"@type":"PostalAddress","addressLocality":"Hollywood","addressRegion":"FL","addressCountry":"US"},
       "areaServed":[
         {"@type":"AdministrativeArea","name":"Broward County, Florida"},
@@ -396,7 +408,7 @@
         {"@type":"Question","name":"Do we have to change the software we already use?","acceptedAnswer":{"@type":"Answer","text":"No. JCG Ops designs into your current business workflow and the tools you already pay for, whether that is ServiceTitan, Jobber, Housecall Pro, a spreadsheet or a notebook by the phone."}},
         {"@type":"Question","name":"Do we need a software developer on staff?","acceptedAnswer":{"@type":"Answer","text":"No. There is no software developer dependency. JCG Ops builds it, trains your team to run it, and you keep running it without us."}},
         {"@type":"Question","name":"Who is JCG Ops for?","acceptedAnswer":{"@type":"Answer","text":"Small home-services businesses with 1 to 12 people: HVAC, plumbing, pool service, electrical and roofing companies in Broward County, including Fort Lauderdale, Hollywood, Pembroke Pines, Coral Springs, Miramar, Pompano Beach, Davie, Plantation and Sunrise."}},
-        {"@type":"Question","name":"How do we get started with JCG Ops?","acceptedAnswer":{"@type":"Answer","text":"Send a note using the contact form at jcgops.com. JCG Ops replies and sets up a 15-minute discovery call to look for efficiencies in how work comes into your business."}}
+        {"@type":"Question","name":"How do we get started with JCG Ops?","acceptedAnswer":{"@type":"Answer","text":"Send a note using the contact form at jcgops.com, or call or text (954) 282-9484. JCG Ops replies and sets up a 15-minute discovery call to look for efficiencies in how work comes into your business."}}
       ]
     },
     {
