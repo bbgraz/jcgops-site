@@ -60,27 +60,45 @@
     .btn-lg{padding:15px 28px;font-size:16px}
 
 
-    /* ===== TEXTURE: the command-center canvas, faint, bleeding off the right edge ===== */
-    .hero{position:relative}
-    /* ===== TEXTURE: the command-center canvas, feathered into the page ===== */
-    #what{position:relative; overflow:hidden}
-    #what > *:not(.texture){position:relative; z-index:1}
-    .texture{
-      position:absolute; top:-90px; right:-170px; width:860px; max-width:none;   /* <-- MOVE IT: top/right/width */
-      pointer-events:none; user-select:none; z-index:0;
-      opacity:.46;   /* <-- DIAL THE TEXTURE HERE: .20 whisper, .46 present, .65 bold */
-      /* A soft blob: fully solid only at the middle, gone well before every edge,
-         so it dissolves into the page instead of ending in a straight line. */
-      -webkit-mask-image:radial-gradient(closest-side at 62% 45%, #000 0%, rgba(0,0,0,.88) 28%, rgba(0,0,0,.45) 52%, rgba(0,0,0,.14) 72%, transparent 88%);
-      mask-image:radial-gradient(closest-side at 62% 45%, #000 0%, rgba(0,0,0,.88) 28%, rgba(0,0,0,.45) 52%, rgba(0,0,0,.14) 72%, transparent 88%);
-      animation:drift 52s ease-in-out infinite alternate;
+
+    /* ===== EXAMPLE DASHBOARD BAND (dark, sits between "What we do" and "How it works") ===== */
+    .dash-band{background:var(--ink); border:none; padding:0; margin:0}
+    .dash-band .wrap{padding-top:64px; padding-bottom:64px}
+    .dash-head{text-align:center; margin-bottom:34px}
+    .dash-head .eyebrow{color:#5FD0E4}
+    .dash-head h2{color:#fff}
+    .dash-head p{color:#9FB6C7; max-width:620px; margin:14px auto 0; font-size:17px}
+    .dash{background:#0A1826; border:1px solid #1E3347; border-radius:18px; overflow:hidden;
+      box-shadow:0 24px 60px rgba(0,0,0,.45)}
+    .dash-bar{display:flex; align-items:center; gap:8px; padding:12px 18px; border-bottom:1px solid #1E3347; background:#0D1F30}
+    .dot3{display:flex; gap:6px}
+    .dot3 i{width:10px; height:10px; border-radius:50%; background:#22394D; display:block}
+    .dash-title{color:#C9DAE6; font-size:13px; font-weight:650; letter-spacing:.01em}
+    .dash-live{margin-left:auto; display:inline-flex; align-items:center; gap:7px; color:#7FD3E4; font-size:12px; font-weight:650}
+    .dash-live b{width:7px; height:7px; border-radius:50%; background:#0FA3BE; display:block; animation:pulse 2.4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+    .dash-body{padding:22px}
+    .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+    .tile{background:#0E2436; border:1px solid #1B3147; border-radius:13px; padding:16px 18px}
+    .tile .k{color:#8FA8BB; font-size:11.5px; font-weight:650; letter-spacing:.07em; text-transform:uppercase}
+    .tile .v{color:#fff; font-size:28px; font-weight:750; letter-spacing:-.02em; margin-top:8px; line-height:1}
+    .tile .d{font-size:12.5px; font-weight:650; margin-top:7px}
+    .up{color:#3FD69B} .flat{color:#8FA8BB}
+    .dash-lower{display:grid; grid-template-columns:1.45fr 1fr; gap:14px; margin-top:14px}
+    .panel-dk{background:#0E2436; border:1px solid #1B3147; border-radius:13px; padding:18px}
+    .panel-dk h4{margin:0 0 14px; color:#C9DAE6; font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase}
+    .rows{display:grid; gap:11px}
+    .row{display:flex; align-items:center; gap:12px; font-size:13.5px; color:#B9CCDB}
+    .row .name{width:104px; flex:none; color:#8FA8BB}
+    .row .track{display:block; flex:1; height:9px; border-radius:6px; background:#16293B; overflow:hidden}
+    .row .fill{display:block; height:9px; border-radius:6px; background:linear-gradient(90deg,#0FA3BE,#3FD69B)}
+    .row .num{width:38px; text-align:right; color:#fff; font-weight:700; flex:none}
+    .dash-note{margin-top:16px; text-align:center; color:#7E93A6; font-size:12.5px}
+    @media (max-width:900px){
+      .tiles{grid-template-columns:repeat(2,1fr)}
+      .dash-lower{grid-template-columns:1fr}
+      .dash-band .wrap{padding-top:48px; padding-bottom:48px}
     }
-    @keyframes drift{
-      from{transform:translate3d(0,0,0) scale(1)}
-      to{transform:translate3d(-24px,14px,0) scale(1.035)}
-    }
-    @media (prefers-reduced-motion: reduce){ .texture{animation:none} }
-    @media (max-width:1180px){ .texture{display:none} }
 
     /* Hero */
     .hero{padding:72px 0 56px;text-align:center}
@@ -108,7 +126,7 @@
     .g3{grid-template-columns:repeat(3,1fr)}
     .g2{grid-template-columns:repeat(2,1fr)}
     .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-    .card.soft{background:rgba(245,249,252,.88);border-color:transparent;backdrop-filter:blur(2px)}
+    .card.soft{background:var(--soft);border-color:transparent}
     .card h3{margin:16px 0 0;font-size:18.5px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
     .card p{margin:9px 0 0;color:var(--muted);font-size:15.5px}
     .icon{width:42px;height:42px;border-radius:11px;background:var(--soft2);color:var(--navy);
@@ -228,7 +246,6 @@
 
     <!-- ========== 4. WHAT WE DO: four cards ========== -->
     <section id="what">
-      <img class="texture" src="canvas.jpg" alt="" aria-hidden="true" width="1150" height="840" loading="lazy" decoding="async">
       <div class="center">
         <p class="eyebrow">What we do for you</p>
         <h2>Simple systems to keep business moving</h2>
@@ -257,6 +274,56 @@
         </article>
       </div>
     </section>
+
+
+    <!-- ========== 4b. EXAMPLE DASHBOARD: illustrative, not a real customer ========== -->
+  </div>
+  <section class="dash-band">
+    <div class="wrap">
+      <div class="dash-head">
+        <p class="eyebrow">What you get to see</p>
+        <h2>Your business, on one screen</h2>
+        <p>Every call, message and estimate in one place, so you know what came in, what got answered and what turned into work.</p>
+      </div>
+      <div class="dash">
+        <div class="dash-bar">
+          <span class="dot3"><i></i><i></i><i></i></span>
+          <span class="dash-title">Operations dashboard</span>
+          <span class="dash-live"><b></b> Live</span>
+        </div>
+        <div class="dash-body">
+          <div class="tiles">
+            <div class="tile"><div class="k">Calls captured</div><div class="v">142</div><div class="d up">every one answered</div></div>
+            <div class="tile"><div class="k">After hours</div><div class="v">38</div><div class="d up">would have gone to voicemail</div></div>
+            <div class="tile"><div class="k">Estimates sent</div><div class="v">61</div><div class="d up">same day</div></div>
+            <div class="tile"><div class="k">Avg first reply</div><div class="v">4m</div><div class="d flat">down from 6 hours</div></div>
+          </div>
+          <div class="dash-lower">
+            <div class="panel-dk">
+              <h4>Where the work came from</h4>
+              <div class="rows">
+                <div class="row"><span class="name">Phone</span><span class="track"><span class="fill" style="width:78%"></span></span><span class="num">64</span></div>
+                <div class="row"><span class="name">Website form</span><span class="track"><span class="fill" style="width:52%"></span></span><span class="num">41</span></div>
+                <div class="row"><span class="name">Text message</span><span class="track"><span class="fill" style="width:31%"></span></span><span class="num">24</span></div>
+                <div class="row"><span class="name">Referral</span><span class="track"><span class="fill" style="width:16%"></span></span><span class="num">13</span></div>
+              </div>
+            </div>
+            <div class="panel-dk">
+              <h4>Turned into jobs</h4>
+              <div class="rows">
+                <div class="row"><span class="name">Booked</span><span class="track"><span class="fill" style="width:66%"></span></span><span class="num">27</span></div>
+                <div class="row"><span class="name">Quoted</span><span class="track"><span class="fill" style="width:88%"></span></span><span class="num">61</span></div>
+                <div class="row"><span class="name">Waiting</span><span class="track"><span class="fill" style="width:24%"></span></span><span class="num">9</span></div>
+                <div class="row"><span class="name">Lost</span><span class="track"><span class="fill" style="width:12%"></span></span><span class="num">5</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="dash-note">Example only. Your dashboard shows your trades, your channels and your numbers.</p>
+    </div>
+  </section>
+  <div class="wrap">
 
     <!-- ========== 5. HOW IT WORKS: the three steps ========== -->
     <section id="how">
