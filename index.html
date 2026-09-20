@@ -61,26 +61,29 @@
 
 
     /* ===== TEXTURE: the command-center canvas, faint, bleeding off the right edge ===== */
-    .hero{position:relative}
+    .hero{position:relative; overflow:hidden}   /* keeps the texture inside the hero */
     .texture{
-      position:absolute; top:-30px; right:-150px; width:760px; max-width:none;
+      position:absolute; top:-20px; right:-70px; width:620px; max-width:none;
       pointer-events:none; user-select:none; z-index:0;
-      opacity:.10; border-radius:18px;   /* <-- DIAL THE TEXTURE HERE: .04 barely there, .18 clearly visible */
-      /* fade it out toward the text on the left and toward the bottom */
-      -webkit-mask-image:linear-gradient(to left, #000 20%, transparent 85%),
-                         linear-gradient(to bottom, #000 55%, transparent 100%);
-      -webkit-mask-composite:source-in; mask-image:linear-gradient(to left, #000 20%, transparent 85%),
-                         linear-gradient(to bottom, #000 55%, transparent 100%);
+      opacity:.28;   /* <-- DIAL THE TEXTURE HERE: .12 whisper, .28 present, .45 bold */
+      border-radius:18px;
+      /* Fade hard on the left so it never sits behind the headline, and at the bottom
+         so it does not run into the next section. */
+      -webkit-mask-image:linear-gradient(to left, #000 35%, transparent 88%),
+                         linear-gradient(to bottom, #000 60%, transparent 100%);
+      -webkit-mask-composite:source-in;
+      mask-image:linear-gradient(to left, #000 35%, transparent 88%),
+                 linear-gradient(to bottom, #000 60%, transparent 100%);
       mask-composite:intersect;
       animation:drift 48s ease-in-out infinite alternate;
     }
     .hero > *:not(.texture){position:relative; z-index:1}
     @keyframes drift{
       from{transform:translate3d(0,0,0) scale(1)}
-      to{transform:translate3d(-26px,14px,0) scale(1.035)}
+      to{transform:translate3d(-22px,12px,0) scale(1.03)}
     }
     @media (prefers-reduced-motion: reduce){ .texture{animation:none} }
-    @media (max-width:1080px){ .texture{display:none} }
+    @media (max-width:1180px){ .texture{display:none} }
 
     /* Hero */
     .hero{padding:72px 0 56px;text-align:center}
