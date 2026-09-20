@@ -61,26 +61,23 @@
 
 
     /* ===== TEXTURE: the command-center canvas, faint, bleeding off the right edge ===== */
-    .hero{position:relative; overflow:hidden}   /* keeps the texture inside the hero */
+    .hero{position:relative}
+    /* ===== TEXTURE: the command-center canvas, feathered into the page ===== */
+    #what{position:relative; overflow:hidden}
+    #what > *:not(.texture){position:relative; z-index:1}
     .texture{
-      position:absolute; top:-20px; right:-70px; width:620px; max-width:none;
+      position:absolute; top:-90px; right:-170px; width:860px; max-width:none;   /* <-- MOVE IT: top/right/width */
       pointer-events:none; user-select:none; z-index:0;
-      opacity:.28;   /* <-- DIAL THE TEXTURE HERE: .12 whisper, .28 present, .45 bold */
-      border-radius:18px;
-      /* Fade hard on the left so it never sits behind the headline, and at the bottom
-         so it does not run into the next section. */
-      -webkit-mask-image:linear-gradient(to left, #000 35%, transparent 88%),
-                         linear-gradient(to bottom, #000 60%, transparent 100%);
-      -webkit-mask-composite:source-in;
-      mask-image:linear-gradient(to left, #000 35%, transparent 88%),
-                 linear-gradient(to bottom, #000 60%, transparent 100%);
-      mask-composite:intersect;
-      animation:drift 48s ease-in-out infinite alternate;
+      opacity:.46;   /* <-- DIAL THE TEXTURE HERE: .20 whisper, .46 present, .65 bold */
+      /* A soft blob: fully solid only at the middle, gone well before every edge,
+         so it dissolves into the page instead of ending in a straight line. */
+      -webkit-mask-image:radial-gradient(closest-side at 62% 45%, #000 0%, rgba(0,0,0,.88) 28%, rgba(0,0,0,.45) 52%, rgba(0,0,0,.14) 72%, transparent 88%);
+      mask-image:radial-gradient(closest-side at 62% 45%, #000 0%, rgba(0,0,0,.88) 28%, rgba(0,0,0,.45) 52%, rgba(0,0,0,.14) 72%, transparent 88%);
+      animation:drift 52s ease-in-out infinite alternate;
     }
-    .hero > *:not(.texture){position:relative; z-index:1}
     @keyframes drift{
       from{transform:translate3d(0,0,0) scale(1)}
-      to{transform:translate3d(-22px,12px,0) scale(1.03)}
+      to{transform:translate3d(-24px,14px,0) scale(1.035)}
     }
     @media (prefers-reduced-motion: reduce){ .texture{animation:none} }
     @media (max-width:1180px){ .texture{display:none} }
@@ -111,7 +108,7 @@
     .g3{grid-template-columns:repeat(3,1fr)}
     .g2{grid-template-columns:repeat(2,1fr)}
     .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-    .card.soft{background:var(--soft);border-color:transparent}
+    .card.soft{background:rgba(245,249,252,.88);border-color:transparent;backdrop-filter:blur(2px)}
     .card h3{margin:16px 0 0;font-size:18.5px;line-height:1.3;letter-spacing:-.01em;font-weight:700}
     .card p{margin:9px 0 0;color:var(--muted);font-size:15.5px}
     .icon{width:42px;height:42px;border-radius:11px;background:var(--soft2);color:var(--navy);
@@ -190,7 +187,6 @@
   <div class="wrap">
     <!-- ========== 2. HERO: the big headline, the two buttons, the three ticks ========== -->
     <section class="hero" style="border-top:none">
-      <img class="texture" src="canvas.jpg" alt="" aria-hidden="true" width="1150" height="840" loading="lazy" decoding="async">
       <span class="pill"><span class="dot"></span>Miami-Dade &amp; Broward County, Florida</span>
       <h1>Stop missed opportunities.</h1>
       <p class="lead">Custom AI solutions for single operator and small businesses</p>
@@ -232,6 +228,7 @@
 
     <!-- ========== 4. WHAT WE DO: four cards ========== -->
     <section id="what">
+      <img class="texture" src="canvas.jpg" alt="" aria-hidden="true" width="1150" height="840" loading="lazy" decoding="async">
       <div class="center">
         <p class="eyebrow">What we do for you</p>
         <h2>Simple systems to keep business moving</h2>
