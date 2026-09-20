@@ -23,7 +23,7 @@
   <style>
     /* ===== COLORS AND SIZES: change a value here and it changes everywhere ===== */
     :root{
-      --ink:#0E2135; --navy:#1B3A57; --teal:#0FA3BE; --teal-dark:#0B7F94;
+      --ink:#0E2135; --navy:#1B3A57; --teal:#0FA3BE; --teal-dark:#0A7386;
       --muted:#55677A; --line:#E3EAF1; --bg:#FFFFFF; --soft:#F5F9FC; --soft2:#EDF4F8;
       --radius:16px; --wrap:1080px;
       color-scheme: light;
@@ -53,8 +53,8 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
       border-radius:999px;padding:12px 22px;font-weight:650;font-size:15px;line-height:1;
       border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:.15s ease}
-    .btn-primary{background:var(--teal);color:#fff}
-    .btn-primary:hover{background:var(--teal-dark);text-decoration:none}
+    .btn-primary{background:var(--teal-dark);color:#fff}
+    .btn-primary:hover{background:#08606F;text-decoration:none}
     .btn-ghost{background:#fff;color:var(--navy);border-color:var(--line)}
     .btn-ghost:hover{border-color:var(--navy);text-decoration:none}
     .btn-lg{padding:15px 28px;font-size:16px}
@@ -131,8 +131,25 @@
     .call-line a{font-weight:730}
     .form-note{font-size:13.5px;color:var(--muted);margin:2px 0 0}
 
-    footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--muted);font-size:14.5px}
-    footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+    footer{border-top:1px solid var(--line);padding:40px 0 48px;color:var(--muted);font-size:14.5px}
+    footer .wrap{display:block;text-align:center}
+    .foot-logo{width:96px;height:auto;display:block;margin:0 auto}
+    .foot-biz{margin:14px 0 0;font-size:14px;line-height:1.55}
+    .foot-copy{margin:12px 0 0;font-size:14px}
+    .foot-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 0;margin-top:16px}
+    .foot-links a{color:var(--navy);font-weight:650;padding:0 16px;border-left:1px solid var(--line);line-height:1.2}
+    .foot-links a:first-child{border-left:0}
+    @media (max-width:560px){.foot-links a{border-left:0;padding:0 11px}}
+
+    /* Keyboard users: a visible focus ring, and a way to jump past the top bar */
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+    .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--navy);font-weight:700;
+      padding:12px 18px;border-radius:0 0 10px 0;z-index:100}
+    .skip:focus{left:0}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    }
 
     @media (max-width:860px){
       .g3,.steps{grid-template-columns:1fr}
@@ -146,6 +163,8 @@
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to the main content</a>
+
 <!-- ========== 1. TOP BAR: logo, phone number, button ========== -->
 <header class="site-header">
   <div class="wrap">
@@ -155,12 +174,12 @@
     </a>
     <div class="head-actions">
       <a class="head-phone" href="tel:+19542829484">(954) 282-9484</a>
-      <a class="btn btn-primary" href="#contact">Start Now</a>
+      <a class="btn btn-primary" href="/#contact">Start Now</a>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main">
   <div class="wrap">
     <section class="hero" style="border-top:none">
       <span class="pill"><span class="dot"></span>Message received</span>
@@ -176,11 +195,16 @@
 
 <footer>
   <div class="wrap">
-    <div style="display:flex;align-items:center;gap:14px">
-      <img src="logo.png" width="96" height="81" alt="JCG Ops" style="width:96px;height:auto">
-      <span>JCG Ops, a JCG Concepts, Inc. business.<br>Hollywood, Florida. Serving Miami-Dade and Broward Counties.</span>
-    </div>
-    <div><a href="tel:+19542829484">(954) 282-9484</a></div>
+    <img class="foot-logo" src="logo.png" width="96" height="81" alt="JCG Ops">
+    <p class="foot-biz">JCG Ops, a JCG Concepts, Inc. business. Hollywood, Florida.<br>Serving Miami-Dade and Broward Counties.</p>
+    <p class="foot-copy">Copyright &copy; 2026 JCG Concepts, Inc.</p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="tel:+19542829484">(954) 282-9484</a>
+      <a href="/#contact">Start Now</a>
+    </nav>
   </div>
 </footer>
 </body></html>

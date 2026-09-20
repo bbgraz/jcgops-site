@@ -23,7 +23,7 @@
   <style>
     /* ===== COLORS AND SIZES: change a value here and it changes everywhere ===== */
     :root{
-      --ink:#0E2135; --navy:#1B3A57; --teal:#0FA3BE; --teal-dark:#0B7F94;
+      --ink:#0E2135; --navy:#1B3A57; --teal:#0FA3BE; --teal-dark:#0A7386;
       --muted:#55677A; --line:#E3EAF1; --bg:#FFFFFF; --soft:#F5F9FC; --soft2:#EDF4F8;
       --radius:16px; --wrap:1080px;
       color-scheme: light;
@@ -53,8 +53,8 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
       border-radius:999px;padding:12px 22px;font-weight:650;font-size:15px;line-height:1;
       border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:.15s ease}
-    .btn-primary{background:var(--teal);color:#fff}
-    .btn-primary:hover{background:var(--teal-dark);text-decoration:none}
+    .btn-primary{background:var(--teal-dark);color:#fff}
+    .btn-primary:hover{background:#08606F;text-decoration:none}
     .btn-ghost{background:#fff;color:var(--navy);border-color:var(--line)}
     .btn-ghost:hover{border-color:var(--navy);text-decoration:none}
     .btn-lg{padding:15px 28px;font-size:16px}
@@ -86,7 +86,7 @@
     .up,.flat{color:#3FD69B}
     .dash-lower{display:grid; grid-template-columns:1.45fr 1fr; gap:14px; margin-top:14px}
     .panel-dk{background:#0E2436; border:1px solid #1B3147; border-radius:13px; padding:18px}
-    .panel-dk h4{margin:0 0 14px; color:#C9DAE6; font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase}
+    .panel-dk h3{margin:0 0 14px; color:#C9DAE6; font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase}
     .rows{display:grid; gap:11px}
     .row{display:flex; align-items:center; gap:12px; font-size:13.5px; color:#B9CCDB}
     .row .name{width:104px; flex:none; color:#8FA8BB}
@@ -172,8 +172,25 @@
     .call-line a{font-weight:730}
     .form-note{font-size:13.5px;color:var(--muted);margin:2px 0 0}
 
-    footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--muted);font-size:14.5px}
-    footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+    footer{border-top:1px solid var(--line);padding:40px 0 48px;color:var(--muted);font-size:14.5px}
+    footer .wrap{display:block;text-align:center}
+    .foot-logo{width:96px;height:auto;display:block;margin:0 auto}
+    .foot-biz{margin:14px 0 0;font-size:14px;line-height:1.55}
+    .foot-copy{margin:12px 0 0;font-size:14px}
+    .foot-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 0;margin-top:16px}
+    .foot-links a{color:var(--navy);font-weight:650;padding:0 16px;border-left:1px solid var(--line);line-height:1.2}
+    .foot-links a:first-child{border-left:0}
+    @media (max-width:560px){.foot-links a{border-left:0;padding:0 11px}}
+
+    /* Keyboard users: a visible focus ring, and a way to jump past the top bar */
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+    .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--navy);font-weight:700;
+      padding:12px 18px;border-radius:0 0 10px 0;z-index:100}
+    .skip:focus{left:0}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    }
 
     @media (max-width:860px){
       .g3,.steps{grid-template-columns:1fr}
@@ -186,6 +203,8 @@
   </style>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to the main content</a>
 
 <!-- ========== 1. TOP BAR: logo, phone number, button ========== -->
 <header class="site-header">
@@ -201,7 +220,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <div class="wrap">
     <!-- ========== 2. HERO: the big headline, the two buttons, the three ticks ========== -->
     <section class="hero" style="border-top:none">
@@ -213,9 +232,9 @@
         <a class="btn btn-ghost btn-lg" href="#how">How it works</a>
       </div>
       <div class="assurance">
-        <span><svg class="check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"></path></svg> No long-term contracts</span>
-        <span><svg class="check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"></path></svg> No software developer dependency</span>
-        <span><svg class="check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"></path></svg> We design into your current workflow</span>
+        <span><svg aria-hidden="true" focusable="false" class="check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"></path></svg> No long-term contracts</span>
+        <span><svg aria-hidden="true" focusable="false" class="check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"></path></svg> No software developer dependency</span>
+        <span><svg aria-hidden="true" focusable="false" class="check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"></path></svg> We design into your current workflow</span>
       </div>
     </section>
 
@@ -227,17 +246,17 @@
       </div>
       <div class="grid g3">
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path><line x1="17" y1="2" x2="23" y2="8"></line><line x1="23" y1="2" x2="17" y2="8"></line></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path><line x1="17" y1="2" x2="23" y2="8"></line><line x1="23" y1="2" x2="17" y2="8"></line></svg></div>
           <h3>The call nobody answers</h3>
           <p>Call comes in but everyone's busy. You've just lost the business to the team that answers.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 12 15 15"></polyline></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 12 15 15"></polyline></svg></div>
           <h3>Estimates take too long</h3>
           <p>You have exactly 24 hours before your competition steals the business.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"></path></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"></path></svg></div>
           <h3>The overwhelmed team</h3>
           <p>Too busy servicing current customers to drive new business.</p>
         </article>
@@ -253,22 +272,22 @@
       </div>
       <div class="grid g2">
         <article class="card soft">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg></div>
           <h3>Capture every incoming job...</h3>
           <p>Don't miss one lead</p>
         </article>
         <article class="card soft">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
           <h3>Fast estimates...</h3>
           <p>Give customers estimates on the spot, same day or next day.</p>
         </article>
         <article class="card soft">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
           <h3>Keep customers in the loop...</h3>
           <p>You're only as good as your word and customers hate when things go quiet. Automated messaging keeps the communication flowing and builds trust with your customers.</p>
         </article>
         <article class="card soft">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><polyline points="19 9 13 15 9 11 5 15"></polyline></svg></div>
+          <div class="icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><polyline points="19 9 13 15 9 11 5 15"></polyline></svg></div>
           <h3>Custom business dashboards</h3>
           <p>No more guessing how many calls, emails or text messages came in or if they were replied to. Track your pipeline, return on ad spend (ROAS) and other important metrics on a custom dashboard.</p>
         </article>
@@ -278,7 +297,7 @@
 
     <!-- ========== 4b. EXAMPLE DASHBOARD: illustrative, not a real customer ========== -->
   </div>
-  <section class="dash-band">
+  <section class="dash-band" aria-label="Example dashboard. The numbers shown are an illustration, not a real customer.">
     <div class="wrap">
       <div class="dash-head">
         <p class="eyebrow">EXAMPLE</p>
@@ -286,9 +305,9 @@
       </div>
       <div class="dash">
         <div class="dash-bar">
-          <span class="dot3"><i></i><i></i><i></i></span>
+          <span class="dot3" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="dash-title">Operations dashboard</span>
-          <span class="dash-live"><b></b> Live</span>
+          <span class="dash-live"><b aria-hidden="true"></b> Live</span>
         </div>
         <div class="dash-body">
           <div class="tiles">
@@ -299,7 +318,7 @@
           </div>
           <div class="dash-lower">
             <div class="panel-dk">
-              <h4>Where the work came from</h4>
+              <h3>Where the work came from</h3>
               <div class="rows">
                 <div class="row"><span class="name">Phone</span><span class="track"><span class="fill" style="width:78%"></span></span><span class="num">64</span></div>
                 <div class="row"><span class="name">Website form</span><span class="track"><span class="fill" style="width:52%"></span></span><span class="num">41</span></div>
@@ -308,7 +327,7 @@
               </div>
             </div>
             <div class="panel-dk">
-              <h4>Turned into jobs</h4>
+              <h3>Turned into jobs</h3>
               <div class="rows">
                 <div class="row"><span class="name">Booked</span><span class="track"><span class="fill" style="width:66%"></span></span><span class="num">27</span></div>
                 <div class="row"><span class="name">Quoted</span><span class="track"><span class="fill" style="width:88%"></span></span><span class="num">61</span></div>
@@ -454,11 +473,16 @@
 <!-- ========== 9. FOOTER ========== -->
 <footer>
   <div class="wrap">
-    <div style="display:flex;align-items:center;gap:14px">
-      <img src="logo.png" width="96" height="81" alt="JCG Ops" style="width:96px;height:auto">
-      <span>JCG Ops, a JCG Concepts, Inc. business.<br>Hollywood, Florida. Serving Miami-Dade and Broward Counties.</span>
-    </div>
-    <div><a href="tel:+19542829484">(954) 282-9484</a> &nbsp;·&nbsp; <a href="#contact">Start Now</a></div>
+    <img class="foot-logo" src="logo.png" width="96" height="81" alt="JCG Ops">
+    <p class="foot-biz">JCG Ops, a JCG Concepts, Inc. business. Hollywood, Florida.<br>Serving Miami-Dade and Broward Counties.</p>
+    <p class="foot-copy">Copyright &copy; 2026 JCG Concepts, Inc.</p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="tel:+19542829484">(954) 282-9484</a>
+      <a href="/#contact">Start Now</a>
+    </nav>
   </div>
 </footer>
 
