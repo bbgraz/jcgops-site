@@ -152,6 +152,7 @@
     /* FAQ */
     .faq{margin-top:34px;border-top:1px solid var(--line)}
     .faq details{border-bottom:1px solid var(--line)}
+    .faq details:last-child{border-bottom:0}  /* the contact section's own top line closes the list */
     .faq summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:670;font-size:17px;
       display:flex;justify-content:space-between;align-items:center;gap:20px}
     .faq summary::-webkit-details-marker{display:none}
