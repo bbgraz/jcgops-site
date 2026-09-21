@@ -95,10 +95,13 @@
     .row .fill{display:block; height:9px; border-radius:6px; background:linear-gradient(90deg,#0FA3BE,#3FD69B)}
     .row .num{width:38px; text-align:right; color:#fff; font-weight:700; flex:none}
     .dash-note{margin-top:16px; text-align:center; color:#7E93A6; font-size:12.5px}
-    .scroll-cue{display:block; width:46px; margin:22px auto 0; color:#5FD0E4; opacity:.78}
+    /* Height is stated outright, never left to the browser to infer from the viewBox,
+       and the padding leaves room for the bounce so the last chevron cannot clip. */
+    .scroll-cue{display:block; width:46px; height:60px; padding-bottom:10px; box-sizing:content-box;
+      margin:22px auto 0; color:#5FD0E4; opacity:.8}
     .scroll-cue:hover{opacity:1; text-decoration:none}
-    .scroll-cue svg{display:block; width:46px; height:auto; fill:none; stroke:currentColor;
-      stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round; animation:cue 2.4s ease-in-out infinite}
+    .scroll-cue svg{display:block; width:46px; height:60px; fill:currentColor; stroke:none;
+      overflow:visible; animation:cue 2.4s ease-in-out infinite}
     @keyframes cue{0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)}}
     @media (max-width:900px){
       .tiles{grid-template-columns:repeat(2,1fr)}
@@ -347,7 +350,7 @@
       </div>
       <p class="dash-note">Example only. Your dashboard shows your trades, your channels and your numbers.</p>
       <a class="scroll-cue" href="#steps" aria-label="Keep reading: how it works">
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 26 38"><path d="M4 4l9 8 9-8"></path><path d="M4 15l9 8 9-8"></path><path d="M4 26l9 8 9-8"></path></svg>
+        <svg aria-hidden="true" focusable="false" width="46" height="60" viewBox="0 0 40 52"><path d="M0 0l20 13L40 0v9L20 22 0 9z"></path><path d="M0 14l20 13 20-13v9L20 36 0 23z"></path><path d="M0 28l20 13 20-13v9L20 50 0 37z"></path></svg>
       </a>
     </div>
   </section>
